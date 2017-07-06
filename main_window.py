@@ -13,11 +13,13 @@ class MainWindow(object):
         
         self.add_new_button = Button(self.right_frame, text='Add New', command=self.open_entry_window)
         self.remove_button = Button(self.right_frame, text='Remove')
+        self.close_button = Button(self.right_frame, text='Close', command=self.root.quit)
 
         self.left_frame.pack()
         self.right_frame.pack()
         self.add_new_button.pack()
         self.remove_button.pack()
+        self.close_button.pack()
 
         self.root.mainloop()
 
@@ -34,7 +36,7 @@ class EntryWindow(object):
         self.bottom_frame = Frame(self.root)
 
         self.done_button = Button(self.bottom_frame, text='Done')
-        self.done_button.pack(side=LEFT)
+        self.done_button.pack(side=LEFT, padx=5, pady=5)
         self.cancel_button = Button(self.bottom_frame, text='Cancel', command=self.root.destroy)
         self.cancel_button.pack(side=LEFT)
 
