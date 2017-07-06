@@ -35,7 +35,7 @@ class EntryWindow(object):
         self.top_frame = Frame(self.root)
         self.bottom_frame = Frame(self.root)
 
-        self.done_button = Button(self.bottom_frame, text='Done')
+        self.done_button = Button(self.bottom_frame, text='Done', command=self.print_all_text)
         self.done_button.pack(side=LEFT, padx=5, pady=5)
         self.cancel_button = Button(self.bottom_frame, text='Cancel', command=self.root.destroy)
         self.cancel_button.pack(side=LEFT)
@@ -80,4 +80,27 @@ class EntryWindow(object):
 
         self.zip.grid(row=5)
         self.zip_box.grid(row=5, column=1)
+    
+    def get_text(self):
+        """Grab the text from the text boxes"""
+        ATTRIBUTES = {
+            'first_name': self.first_name_box.get(),
+            'last_name': self.last_name_box.get(),
+            'street': self.street_box.get(),
+            'city': self.city_box.get(),
+            'state': self.state_box.get(),
+            'zip': self.zip_box.get()
+        }
+        return ATTRIBUTES
+    
+    def print_attributes(self, attributes):
+        """Print info from text boxes"""
+        print(attributes['first_name'] + ' ' + attributes['last_name'])
+        print(attributes['street'])
+        print(attributes['city'] + ', ' + attributes['state'] + ', ' + attributes['zip'])
+
+    def print_all_text(self):
+        ATTRIBUTES = self.get_text()
+        self.print_attributes(ATTRIBUTES)
+        self.root.destroy()
     
