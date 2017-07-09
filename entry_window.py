@@ -9,6 +9,7 @@ class EntryWindow(object):
     def __init__(self):
         """Constructor"""
         self.root = Tk()
+        self.root.wm_title('Add New Person')
         self.top_frame = Frame(self.root)
         self.bottom_frame = Frame(self.root)
 

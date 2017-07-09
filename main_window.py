@@ -8,6 +8,7 @@ class MainWindow(object):
     def __init__(self):
         """Constructor"""
         self.root = Tk()
+        self.root.wm_title('Address Book')
 
         self.left_frame = Frame(self.root)
         self.right_frame = Frame(self.root)
