@@ -11,8 +11,8 @@ class LeftFrame(object):
         self.frame = Frame(root)
         self.address_list = Listbox(self.frame)
 
-        self.address_list.insert(END, 'Test 1')
-        self.address_list.insert(END, 'Test 2')
+        self.address_list.insert(END, 'Alberto')
+        self.address_list.insert(END, 'Mia')
 
         self.address_list.pack()
         self.frame.pack(side=LEFT)
