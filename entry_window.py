@@ -82,3 +82,6 @@ class EntryWindow(object):
         self.print_attributes(ATTRIBUTES)
         self.root.destroy()
     
+    def create_text_canvas(self):
+        """Add text to the canvas screen"""
+        

@@ -18,9 +18,10 @@ class MainWindow(object):
         self.remove_button = Button(self.right_frame, text='Remove')
         self.close_button = Button(self.right_frame, text='Close', command=self.root.quit)
         
-        self.address_list = Text(self.left_frame, width=30, height=20)
-        self.address_list.insert(INSERT, 'Test 1')
-        self.address_list.insert(END, 'Test 2')
+        self.address_list = Listbox(self.left_frame)
+        self.address_list.insert(END, 'test 1')
+        self.address_list.insert(END, 'Alberto')
+        self.address_list.insert(END, 'Mia')
         self.address_list.pack()
 
         self.left_frame.pack(side=LEFT)
