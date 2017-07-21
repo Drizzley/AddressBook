@@ -12,8 +12,8 @@ class MainWindow(object):
         self.root = Tk()
         self.root.wm_title('Address Book')
 
-        self.left_frame = self.create_left_frame()#Frame(self.root)
-        self.right_frame = self.create_right_frame()#Frame(self.root)
+        self.left_frame = self.create_left_frame()
+        self.right_frame = self.create_right_frame()
         
         self.root.mainloop()
 
