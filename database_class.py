@@ -24,3 +24,13 @@ class DataBaseClass(object):
                 name = person[0] + ' ' + person[1]
                 people.append(name)
         return people
+
+    def returnAddressFromName(self, name_dict):
+        cursor = self.db.cursor()
+        cursor.execute('SELECT address1 ' \
+                       'FROM foodtown ' \
+                       'WHERE ' \
+                       'first_name = ' + '\"' + name_dict['first_name'] + '\" AND ' \
+                       'last_name = ' + '\"' + name_dict['last_name'] + '\"')
+        address = cursor.fetchone()
+        print(address[0])

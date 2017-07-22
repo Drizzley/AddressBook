@@ -11,7 +11,7 @@ class RightFrame(object):
         self.database = database
 
         self.add_new_button = Button(self.frame, text='Add New', command=self.open_entry_window)
-        self.export_button = Button(self.frame, text='Export', command=self.splitNameSelection)
+        self.export_button = Button(self.frame, text='Export', command=self.getAddressFromName)
         self.remove_button = Button(self.frame, text='Remove')
         self.close_button = Button(self.frame, text='Close', command=root.quit)
 
@@ -43,4 +43,8 @@ class RightFrame(object):
         }
         return name_dict
 
-    
+    def getAddressFromName(self):
+        name_dict = self.splitNameSelection()
+        self.database.returnAddressFromName(name_dict)
+
+
