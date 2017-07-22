@@ -27,4 +27,9 @@ class ExportWindow(object):
 
         self.top_frame.pack(side=TOP)
 
+        self.cash_or_credit = ''
+        Radiobutton(self.bottom_frame, text='Cash', variable=self.cash_or_credit, value='cash').pack(anchor=W)
+        Radiobutton(self.bottom_frame, text='Credit', variable=self.cash_or_credit, value='cash').pack(anchor=W)
+
+        self.bottom_frame.pack()
         self.root.mainloop()
