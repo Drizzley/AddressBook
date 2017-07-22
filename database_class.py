@@ -34,3 +34,13 @@ class DataBaseClass(object):
                        'last_name = ' + '\"' + name_dict['last_name'] + '\"')
         address = cursor.fetchone()
         print(address[0])
+
+    def returnAllCustomerInfo(self, name_dict):
+        cursor = self.db.cursor()
+        cursor.execute('SELECT * ' \
+                       'FROM foodtown ' \
+                       'WHERE ' \
+                       'first_name = ' + '\"' + name_dict['first_name'] + '\" AND ' \
+                       'last_name = ' + '\"' + name_dict['last_name'] + '\"')
+        address = cursor.fetchone()
+        return address
