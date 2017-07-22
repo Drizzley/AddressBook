@@ -8,8 +8,9 @@ import MySQLdb
 
 class LeftFrame(object):
 
-    def __init__(self, root):
+    def __init__(self, root, database):
         self.frame = Frame(root)
+        self.database = database
         self.address_list = Listbox(self.frame)
 
         self.db = MySQLdb.connect(
@@ -19,18 +20,13 @@ class LeftFrame(object):
             db = 'testdb'
         )
 
-        #self.address_list.insert(END, 'Alberto')
-        #self.address_list.insert(END, 'Mia')
         self.populateContactList()
 
         self.address_list.pack()
         self.frame.pack(side=LEFT)
 
     def populateContactList(self):
-        cursor = self.db.cursor()
-        cursor.execute('SELECT first_name, last_name FROM foodtown')
-        results = cursor.fetchall()
-        if results:
-            for person in results:
-                name = person[0] + ' ' + person[1]
-                self.address_list.insert(END, name)
+        person_list = self.database.getNamesOfCustomers()
+        for name in person_list:
+            self.address_list.insert(END, name)
+

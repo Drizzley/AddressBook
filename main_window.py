@@ -4,6 +4,7 @@ from tkinter import *
 from entry_window import EntryWindow
 from left_frame import LeftFrame
 from right_frame import RightFrame
+from database_class import DataBaseClass
 
 class MainWindow(object):
 
@@ -12,16 +13,10 @@ class MainWindow(object):
         self.root = Tk()
         self.root.wm_title('Address Book')
 
-        self.left_frame = self.create_left_frame()
-        self.right_frame = self.create_right_frame()
+        self.database = DataBaseClass()
+
+        self.left_frame = LeftFrame(self.root, self.database)
+        self.right_frame = RightFrame(self.root, self.left_frame, self.database)
         
         self.root.mainloop()
-
-    def create_left_frame(self):
-        """Initializes all of the left frame components"""
-        left_frame = LeftFrame(self.root)
-        return left_frame
-
-    def create_right_frame(self):
-        right_frame = RightFrame(self.root)
-        return right_frame
+        
