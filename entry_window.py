@@ -6,14 +6,17 @@ from tkinter import *
 
 class EntryWindow(object):
 
-    def __init__(self):
+    def __init__(self, database, left_frame):
         """Constructor"""
+        self.database = database
+        self.left_frame = left_frame
+
         self.root = Tk()
         self.root.wm_title('Add New Person')
         self.top_frame = Frame(self.root)
         self.bottom_frame = Frame(self.root)
 
-        self.done_button = Button(self.bottom_frame, text='Done', command=self.print_all_text)
+        self.done_button = Button(self.bottom_frame, text='Done', command=self.createNewCustomer)
         self.done_button.pack(side=LEFT, padx=5, pady=5)
         self.cancel_button = Button(self.bottom_frame, text='Cancel', command=self.root.destroy)
         self.cancel_button.pack(side=LEFT)
@@ -81,7 +84,9 @@ class EntryWindow(object):
         ATTRIBUTES = self.get_text()
         self.print_attributes(ATTRIBUTES)
         self.root.destroy()
-    
-    def create_text_canvas(self):
-        """Add text to the canvas screen"""
-        
+
+    def createNewCustomer(self):
+        customer_dict = self.get_text()
+        self.database.addCustomerToDB(customer_dict)
+        self.left_frame.populateContactList()
+        self.root.destroy()

@@ -24,7 +24,7 @@ class RightFrame(object):
 
     def open_entry_window(self):
         """Opens the EntryWindow object"""
-        entry_window = EntryWindow()
+        entry_window = EntryWindow(self.database, self.left_frame)
 
     def getListboxFromFrame(self):
         frame_children = self.left_frame.frame.winfo_children()
