@@ -40,7 +40,15 @@ class DataBaseClass(object):
         cursor.execute('SELECT * ' \
                        'FROM foodtown ' \
                        'WHERE ' \
-                       'first_name = ' + '\"' + name_dict['first_name'] + '\" AND ' \
-                       'last_name = ' + '\"' + name_dict['last_name'] + '\"')
+                       'first_name = \"' + name_dict['first_name'] + '\" AND ' \
+                       'last_name = \"' + name_dict['last_name'] + '\"')
         address = cursor.fetchone()
         return address
+
+    def deleteCustomerFromDB(self, name_dict):
+        """Deletes the customer from the database"""
+        cursor = self.db.cursor()
+        cursor.execute('DELETE FROM foodtown ' \
+                       'WHERE first_name = \"' + name_dict['first_name'] + '\" AND ' \
+                       'last_name = \"' + name_dict['last_name'] + '\"')
+        self.db.commit()

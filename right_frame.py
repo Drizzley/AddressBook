@@ -13,7 +13,7 @@ class RightFrame(object):
 
         self.add_new_button = Button(self.frame, text='Add New', command=self.open_entry_window)
         self.export_button = Button(self.frame, text='Export', command=self.openExportWindow)
-        self.remove_button = Button(self.frame, text='Remove')
+        self.remove_button = Button(self.frame, text='Remove', command=self.removeCustomer)
         self.close_button = Button(self.frame, text='Close', command=root.quit)
 
         self.add_new_button.pack(fill=X)
@@ -69,4 +69,9 @@ class RightFrame(object):
 
     def openExportWindow(self):
         customer_dict = self.createCustomerDictionary()
-        export_window = ExportWindow(customer_dict,)
+        export_window = ExportWindow(customer_dict)
+
+    def removeCustomer(self):
+        name_dict = self.splitNameSelection()
+        self.database.deleteCustomerFromDB(name_dict)
+        self.left_frame.populateContactList()

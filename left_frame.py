@@ -27,6 +27,10 @@ class LeftFrame(object):
 
     def populateContactList(self):
         person_list = self.database.getNamesOfCustomers()
+
+        if self.address_list.size():
+            self.address_list.delete(0, END)
+            
         for name in person_list:
             self.address_list.insert(END, name)
 
