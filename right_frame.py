@@ -16,11 +16,11 @@ class RightFrame(object):
         self.remove_button = Button(self.frame, text='Remove')
         self.close_button = Button(self.frame, text='Close', command=root.quit)
 
-        self.add_new_button.pack()
-        self.export_button.pack()
-        self.remove_button.pack()
-        self.close_button.pack()
-        self.frame.pack()
+        self.add_new_button.pack(fill=X)
+        self.export_button.pack(fill=X)
+        self.remove_button.pack(fill=X)
+        self.close_button.pack(fill=X)
+        self.frame.pack(fill=BOTH)
 
     def open_entry_window(self):
         """Opens the EntryWindow object"""

@@ -11,6 +11,7 @@ class MainWindow(object):
     def __init__(self):
         """Constructor"""
         self.root = Tk()
+        self.root.geometry('300x200')
         self.root.wm_title('Address Book')
 
         self.database = DataBaseClass()

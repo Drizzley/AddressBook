@@ -22,8 +22,8 @@ class LeftFrame(object):
 
         self.populateContactList()
 
-        self.address_list.pack()
-        self.frame.pack(side=LEFT)
+        self.address_list.pack(fill=BOTH, expand=1)
+        self.frame.pack(side=LEFT, fill=BOTH)
 
     def populateContactList(self):
         person_list = self.database.getNamesOfCustomers()
