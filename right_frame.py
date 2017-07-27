@@ -57,7 +57,7 @@ class RightFrame(object):
            from database"""
         name_dict = self.splitNameSelection()
         customer_info_list = self.database.returnAllCustomerInfo(name_dict)
-        customer_name = customer_info_list[1] + ' ' + customer_info_list[2]
+        customer_name = customer_info_list[1] + ' ' + customer_info_list[2] + ' (' + customer_info_list[8] + ')'
         city_state_zip = customer_info_list[6] + ', ' + customer_info_list[5] + ' ' + customer_info_list[7]
         customer_info_dict = {
             'full_name': customer_name,
