@@ -7,7 +7,7 @@ class ExportWindow(object):
     def __init__(self, customer_dict):
         """Constructor"""
         self.customer_dict = customer_dict
-        self.root = Tk()
+        self.root = Toplevel()
         self.root.wm_title('Export Customer')
         self.root.geometry('300x150')
         self.top_frame = Frame(self.root)
@@ -28,9 +28,10 @@ class ExportWindow(object):
 
         self.top_frame.pack(side=TOP)
 
-        self.cash_or_credit = ''
-        Radiobutton(self.bottom_frame, text='Cash', variable=self.cash_or_credit, value='Cash').pack(anchor=W)
-        Radiobutton(self.bottom_frame, text='Credit', variable=self.cash_or_credit, value='Credit').pack(anchor=W)
+        self.cash_or_credit = StringVar()
+        self.cash_or_credit.set('cash')
+        Radiobutton(self.bottom_frame, text='Cash', variable=self.cash_or_credit, value='cash').pack(anchor=W)
+        Radiobutton(self.bottom_frame, text='Credit', variable=self.cash_or_credit, value='credit').pack(anchor=W)
 
         self.total_label = Label(self.bottom_frame, text='Total $:')
         self.total_entry_box = Entry(self.bottom_frame,width=7)

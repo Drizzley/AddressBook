@@ -11,7 +11,7 @@ class EntryWindow(object):
         self.database = database
         self.left_frame = left_frame
 
-        self.root = Tk()
+        self.root = Toplevel()
         self.root.wm_title('Add New Person')
         self.top_frame = Frame(self.root)
         self.bottom_frame = Frame(self.root)
@@ -37,11 +37,15 @@ class EntryWindow(object):
         self.state_box = Entry(self.top_frame, width=2)
         self.zip_box = Entry(self.top_frame, width=5)
 
+        self.male_or_female = StringVar()
+        self.male_or_female.set("m")
+        self.male_button = Radiobutton(self.bottom_frame, text='Male', value="m", variable=self.male_or_female)
+        self.female_button = Radiobutton(self.bottom_frame, text='Female', value="f", variable=self.male_or_female)
+
         self.pack_top_frame()
 
-        self.male_or_female = ''
-        Radiobutton(self.bottom_frame, text='Male', variable=self.male_or_female, value='m').pack(anchor=W)
-        Radiobutton(self.bottom_frame, text='Female', variable=self.male_or_female, value='f').pack(anchor=W)
+        #Radiobutton(self.bottom_frame, text='Male', variable=self.male_or_female, value='m').pack(anchor=W)
+        #Radiobutton(self.bottom_frame, text='Female', variable=self.male_or_female, value='f').pack(anchor=W)
 
         self.top_frame.pack(side=TOP)
         self.bottom_frame.pack()
@@ -70,6 +74,9 @@ class EntryWindow(object):
 
         self.zip.grid(row=6, sticky=E)
         self.zip_box.grid(row=6, column=1, sticky=W)
+        
+        self.male_button.pack()
+        self.female_button.pack()
     
     def get_text(self):
         """Grab the text from the text boxes"""
@@ -81,7 +88,7 @@ class EntryWindow(object):
             'city': self.city_box.get(),
             'state': self.state_box.get(),
             'zip': self.zip_box.get(),
-            'sex': self.male_or_female
+            'sex': self.male_or_female.get()
         }
         return ATTRIBUTES
 
