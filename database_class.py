@@ -48,9 +48,11 @@ class DataBaseClass(object):
     def deleteCustomerFromDB(self, name_dict):
         """Deletes the customer from the database"""
         cursor = self.db.cursor()
-        cursor.execute('DELETE FROM foodtown ' \
-                       'WHERE first_name = \"' + name_dict['first_name'] + '\" AND ' \
-                       'last_name = \"' + name_dict['last_name'] + '\"')
+        delete_from_operation = (
+            'DELETE FROM foodtown '
+            'WHERE first_name = %(first_name)s AND last_name = %(last_name)s'
+        )
+        cursor.execute(delete_from_operation, name_dict)
         self.db.commit()
 
     def addCustomerToDB(self, customer_dict):
