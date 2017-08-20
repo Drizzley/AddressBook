@@ -37,11 +37,11 @@ class DataBaseClass(object):
 
     def returnAllCustomerInfo(self, name_dict):
         cursor = self.db.cursor()
-        cursor.execute('SELECT * ' \
-                       'FROM foodtown ' \
-                       'WHERE ' \
-                       'first_name = \"' + name_dict['first_name'] + '\" AND ' \
-                       'last_name = \"' + name_dict['last_name'] + '\"')
+        get_customer_info = (
+            'SELECT * FROM foodtown '
+            'WHERE first_name = %(first_name)s AND last_name = %(last_name)s'
+        )
+        cursor.execute(get_customer_info, name_dict)
         address = cursor.fetchone()
         return address
 
