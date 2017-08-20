@@ -55,10 +55,9 @@ class DataBaseClass(object):
 
     def addCustomerToDB(self, customer_dict):
         cursor = self.db.cursor()
-        cursor.execute('INSERT INTO foodtown(first_name, last_name, address1, address2, state,' \
-                       ' city, zip, sex) ' \
-                       'VALUES(\"' + customer_dict['first_name'] + '\",' + \
-                       '\"' + customer_dict['last_name'] +'\", \"' + customer_dict['street'] + \
-                       '\", \"' + customer_dict['apt'] + '\", \"' + customer_dict['state'] + '\", \"' + customer_dict['city'] + \
-                       '\", \"' + customer_dict['zip'] + '\", \"' + customer_dict['sex'] + '\")')
+        insert_into_operation = (
+            'INSERT INTO foodtown(first_name, last_name, address1, address2, state, city, zip, sex)'
+            'VALUES(%(first_name)s, %(last_name)s, %(city)s, %(apt)s, %(state)s, %(city)s, %(zip)s, %(sex)s)'
+            )
+        cursor.execute(insert_into_operation, customer_dict)
         self.db.commit()
