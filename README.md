@@ -43,6 +43,7 @@ NY, NJ, PA, CA, etc
 #### city
 Stores the city. Max length of 12 characters.
 ```
+Eg.
 Boston, Chicago, Washington, San Francisco
 ```
 
