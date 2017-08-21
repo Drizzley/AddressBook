@@ -33,4 +33,3 @@ class LeftFrame(object):
             
         for name in person_list:
             self.address_list.insert(END, name)
-
