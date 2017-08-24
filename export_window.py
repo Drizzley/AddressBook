@@ -10,7 +10,7 @@ class ExportWindow(object):
         self.customer_dict = customer_dict
         self.root = Toplevel()
         self.root.wm_title('Export Customer')
-        self.root.geometry('300x150')
+        self.root.geometry('300x170')
         self.top_frame = Frame(self.root)
         self.bottom_frame = Frame(self.root)
         self.button_frame = Frame(self.root)
