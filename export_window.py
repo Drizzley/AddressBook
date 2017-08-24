@@ -1,6 +1,7 @@
 """Class that holds the window for the export button"""
 
 from tkinter import *
+import csv
 
 class ExportWindow(object):
 
@@ -12,6 +13,7 @@ class ExportWindow(object):
         self.root.geometry('300x150')
         self.top_frame = Frame(self.root)
         self.bottom_frame = Frame(self.root)
+        self.button_frame = Frame(self.root)
 
         self.name_label = Label(self.top_frame, text=customer_dict['full_name'])
         self.address_1_label = Label(self.top_frame, text=customer_dict['address_1'])
@@ -38,5 +40,22 @@ class ExportWindow(object):
         self.total_label.pack(side=LEFT)
         self.total_entry_box.pack(side=LEFT)
 
+        self.export_button = Button(self.button_frame, text='Export', command=self.exportToCSV)
+        self.export_button.pack(side=BOTTOM)
+
         self.bottom_frame.pack()
+        self.button_frame.pack()
         self.root.mainloop()
+
+    def exportToCSV(self):
+        payment_method = self.cash_or_credit.get() + ': $' + self.total_entry_box.get()
+        with open('customer.csv', 'w') as csvfile:
+            write_file = csv.writer(csvfile)
+            write_file.writerow([self.customer_dict['full_name']])
+            write_file.writerow([self.customer_dict['address_1']])
+            if self.customer_dict['address_2'] != '':
+                write_file.writerow([self.customer_dict['address_2']])
+            write_file.writerow([self.customer_dict['address_3']])
+            write_file.writerow([payment_method])
+        self.root.destroy()
+
