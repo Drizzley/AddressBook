@@ -2,7 +2,38 @@
 A desktop application that stroes the addresses of users in a database. Written in Python and using a MySQL database. GUI is made with `TKinter` library included with Python. This application was originally intended for use in a grocery store. This application would help keep track of people who would order groceries online by entering the total amount of the purchase and exporting to an `.CSV` file for book keeping purposes. The exported file is called `customer.csv`. The address is saved for customers who regularly purchase their groceries at this grocery store.
 
 ## Video Demo
-![addressBookGif](./addressBookDemo.gif)
+![addressBookGif](./addressBookDemo2.gif)
+
+#### Steps Shown in Video
+First a new contact is created using the `Add New` button. Their information is added into the text boxes and after pressing `Done`, their information is added to the database. The information I input was as follows:
+```
+First Name: Fake
+Last Name:  Person
+Street:     123 Lane
+Apt:        Apt 4B
+City:       Fake City
+State:      NY
+Zip:        09823
+[X]Male []Female
+```
+
+Next, the contact that was just added is selected from the list on the left and click on the `Export` button. We verify that the information shown is correct, select either `Cash` or `Credit`, and the total amount spent in the text box labeled `Total`. Click on `Export` again and the all the information is written to a `.csv` file named `customer.csv`. What I entered in the `Export Customer` screen:
+```
+[]Cash [X]Credit
+Total $: 123.09
+```
+
+After that, I use the terminal to show the contents of the `customer.csv` that was just created. I use the command `cat customer.csv` to output the contents of the file
+```
+$: cat customer.csv 
+Fake Person (m)
+Fake City
+Apt 4B
+"Fake City, NY 09823"
+credit: $123.09
+```
+
+Finally, I delete the contact that was just created by selecting the contact from the list on the left and pressing the `Remove` button.
 
 
 ## Database Schema
