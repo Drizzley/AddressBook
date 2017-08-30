@@ -12,11 +12,13 @@ class RightFrame(object):
         self.database = database
 
         self.add_new_button = Button(self.frame, text='Add New', command=self.open_entry_window)
+        self.mia = Button(self.frame, text='Edit', command=self.editEntry)
         self.export_button = Button(self.frame, text='Export', command=self.openExportWindow)
         self.remove_button = Button(self.frame, text='Remove', command=self.removeCustomer)
         self.close_button = Button(self.frame, text='Close', command=root.quit)
 
         self.add_new_button.pack(fill=X)
+        self.mia.pack(fill=X)
         self.export_button.pack(fill=X)
         self.remove_button.pack(fill=X)
         self.close_button.pack(fill=X)
@@ -75,3 +77,21 @@ class RightFrame(object):
         name_dict = self.splitNameSelection()
         self.database.deleteCustomerFromDB(name_dict)
         self.left_frame.populateContactList()
+
+    def editEntry(self):
+        name_dict = self.splitNameSelection()
+        customer_info_dict = self.database.returnAllCustomerInfo(name_dict)
+        #print(customer_info_dict)
+        cust = {
+            'first_name': customer_info_dict[1],
+            'last_name': customer_info_dict[2],
+            'address1': customer_info_dict[3],
+            'address2': customer_info_dict[4],
+            'state': customer_info_dict[5],
+            'city': customer_info_dict[6],
+            'zip': customer_info_dict[7],
+            'sex': customer_info_dict[8],
+            'phone': customer_info_dict[9],
+        }
+        edit_window = EntryWindow(self.database, self.left_frame, **cust)
+

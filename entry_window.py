@@ -6,7 +6,7 @@ from tkinter import *
 
 class EntryWindow(object):
 
-    def __init__(self, database, left_frame):
+    def __init__(self, database, left_frame, **customer_dict):
         """Constructor"""
         self.database = database
         self.left_frame = left_frame
@@ -46,11 +46,11 @@ class EntryWindow(object):
 
         self.pack_top_frame()
 
-        #Radiobutton(self.bottom_frame, text='Male', variable=self.male_or_female, value='m').pack(anchor=W)
-        #Radiobutton(self.bottom_frame, text='Female', variable=self.male_or_female, value='f').pack(anchor=W)
-
         self.top_frame.pack(side=TOP)
         self.bottom_frame.pack()
+
+        if customer_dict is not None:
+            self.prefillTextboxes(customer_dict)
 
         self.root.mainloop()
 
@@ -103,3 +103,7 @@ class EntryWindow(object):
         self.database.addCustomerToDB(customer_dict)
         self.left_frame.populateContactList()
         self.root.destroy()
+
+    def prefillTextboxes(self, customer_dict):
+        self.first_name_box.insert(0, customer_dict['first_name'])
+
