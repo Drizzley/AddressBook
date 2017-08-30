@@ -23,6 +23,7 @@ class EntryWindow(object):
 
         self.first_name = Label(self.top_frame, text='First Name:')
         self.last_name = Label(self.top_frame, text='Last Name:')
+        self.phone_number = Label(self.top_frame, text='Phone:')
         self.street = Label(self.top_frame, text='Street:')
         self.apt_label = Label(self.top_frame, text='Apt:')
         self.city = Label(self.top_frame, text='City:')
@@ -31,6 +32,7 @@ class EntryWindow(object):
 
         self.first_name_box = Entry(self.top_frame)
         self.last_name_box = Entry(self.top_frame)
+        self.phone_box = Entry(self.top_frame)
         self.street_box = Entry(self.top_frame)
         self.apt_box = Entry(self.top_frame)
         self.city_box = Entry(self.top_frame)
@@ -60,20 +62,23 @@ class EntryWindow(object):
         self.last_name.grid(row=1, sticky=E)
         self.last_name_box.grid(row=1, column=1)
 
-        self.street.grid(row=2, sticky=E)
-        self.street_box.grid(row=2, column=1)
+        self.phone_number.grid(row=2, sticky=E)
+        self.phone_box.grid(row=2, column=1)
 
-        self.apt_label.grid(row=3, sticky=E)
-        self.apt_box.grid(row=3, column=1)
+        self.street.grid(row=3, sticky=E)
+        self.street_box.grid(row=3, column=1)
 
-        self.city.grid(row=4, sticky=E)
-        self.city_box.grid(row=4, column=1)
+        self.apt_label.grid(row=4, sticky=E)
+        self.apt_box.grid(row=4, column=1)
 
-        self.state.grid(row=5, sticky=E)
-        self.state_box.grid(row=5, column=1, sticky=W)
+        self.city.grid(row=5, sticky=E)
+        self.city_box.grid(row=5, column=1)
 
-        self.zip.grid(row=6, sticky=E)
-        self.zip_box.grid(row=6, column=1, sticky=W)
+        self.state.grid(row=6, sticky=E)
+        self.state_box.grid(row=6, column=1, sticky=W)
+
+        self.zip.grid(row=7, sticky=E)
+        self.zip_box.grid(row=7, column=1, sticky=W)
         
         self.male_button.pack()
         self.female_button.pack()
@@ -83,6 +88,7 @@ class EntryWindow(object):
         ATTRIBUTES = {
             'first_name': self.first_name_box.get(),
             'last_name': self.last_name_box.get(),
+            'phone' : self.phone_box.get(),
             'street': self.street_box.get(),
             'apt': self.apt_box.get(),
             'city': self.city_box.get(),
