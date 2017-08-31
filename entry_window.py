@@ -49,7 +49,7 @@ class EntryWindow(object):
         self.top_frame.pack(side=TOP)
         self.bottom_frame.pack()
 
-        if customer_dict is not None:
+        if customer_dict:
             self.prefillTextboxes(customer_dict)
 
         self.root.mainloop()
