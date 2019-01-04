@@ -4,7 +4,8 @@ All the results from the database will be shown here
 """
 
 from tkinter import *
-import MySQLdb
+# import MySQLdb
+import mysql.connector
 
 class LeftFrame(object):
 
@@ -13,11 +14,17 @@ class LeftFrame(object):
         self.database = database
         self.address_list = Listbox(self.frame)
 
-        self.db = MySQLdb.connect(
-            host = 'localhost',
-            user = 'testuser',
-            passwd = 'testpassword',
-            db = 'testdb'
+        # self.db = MySQLdb.connect(
+        #     host = 'localhost',
+        #     user = 'testuser',
+        #     passwd = 'testpassword',
+        #     db = 'testdb'
+        # )
+        self.cnx = mysql.connector.connect(
+            user='root', 
+            password='my-secret-pw',
+            host='172.17.0.2',
+            database='testdb'
         )
 
         self.populateContactList()
