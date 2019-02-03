@@ -2,7 +2,7 @@
 A desktop application that stroes the addresses of users in a database. Written in Python and using a MySQL database. GUI is made with `TKinter` library included with Python. This application was originally intended for use in a grocery store. This application would help keep track of people who would order groceries online by entering the total amount of the purchase and exporting to an `.CSV` file for book keeping purposes. The exported file is called `customer.csv`. The address is saved for customers who regularly purchase their groceries at this grocery store.
 
 ## Video Demo
-![addressBookGif](./addressBookDemo2.gif)
+![addressBookGif](https://github.com/afranco07/gifImageStorage/blob/master/addressBookDemo.gif?raw=true)
 
 #### Steps Shown in Video
 First a new contact is created using the `Add New` button. Their information is added into the text boxes and after pressing `Done`, their information is added to the database. The information I input was as follows:
@@ -105,4 +105,4 @@ City, State Zip
 [Cash or Credit]: $total amount
 ```
 #### Example of customer.csv
-![export_screen](./csv_screen_shot.png)
+![export_screen](https://github.com/afranco07/gifImageStorage/blob/master/address_book_csv_screen_shot.png?raw=true)
