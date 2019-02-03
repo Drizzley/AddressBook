@@ -16,7 +16,20 @@ class EntryWindow(object):
         self.top_frame = Frame(self.root)
         self.bottom_frame = Frame(self.root)
 
-        self.done_button = Button(self.bottom_frame, text='Done', command=self.createNewCustomer)
+        # If passed customer, change button to 'edit' instead of 'add'
+        if customer_dict:
+            # customer_dict['first_name_id'] = customer_dict['first_name']
+            # customer_dict['last_name_id'] = customer_dict['last_name']
+            # customer_dict['street'] = customer_dict['address1']
+            # customer_dict['apt'] = customer_dict['address2']
+            self.customer_data = {
+                'first_name_id': customer_dict['first_name'], 
+                'last_name_id': customer_dict['last_name']
+            }
+            self.done_button = Button(self.bottom_frame, text='Edit', command=self.editExistingCustomer)
+        else:
+            self.done_button = Button(self.bottom_frame, text='Add', command=self.createNewCustomer)
+
         self.done_button.pack(side=LEFT, padx=5, pady=5)
         self.cancel_button = Button(self.bottom_frame, text='Cancel', command=self.root.destroy)
         self.cancel_button.pack(side=LEFT)
@@ -96,6 +109,11 @@ class EntryWindow(object):
             'zip': self.zip_box.get(),
             'sex': self.male_or_female.get()
         }
+
+        if self.customer_data:
+            ATTRIBUTES['first_name_id'] = self.customer_data['first_name_id']
+            ATTRIBUTES['last_name_id'] = self.customer_data['last_name_id']
+
         return ATTRIBUTES
 
     def createNewCustomer(self):
@@ -104,6 +122,19 @@ class EntryWindow(object):
         self.left_frame.populateContactList()
         self.root.destroy()
 
+    def editExistingCustomer(self):
+        customer_dict = self.get_text()
+        self.database.updateExistingCustomer(customer_dict)
+        self.left_frame.populateContactList()
+        self.root.destroy()
+
     def prefillTextboxes(self, customer_dict):
         self.first_name_box.insert(0, customer_dict['first_name'])
+        self.last_name_box.insert(0, customer_dict['last_name'])
+        self.phone_box.insert(0, customer_dict['phone'])
+        self.street_box.insert(0, customer_dict['address1'])
+        self.apt_box.insert(0, customer_dict['address2'])
+        self.city_box.insert(0, customer_dict['city'])
+        self.state_box.insert(0, customer_dict['state'])
+        self.zip_box.insert(0, customer_dict['zip'])
 

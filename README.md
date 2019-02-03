@@ -4,6 +4,25 @@ A desktop application that stroes the addresses of users in a database. Written 
 ## Video Demo
 ![addressBookGif](https://github.com/afranco07/gifImageStorage/blob/master/addressBookDemo.gif?raw=true)
 
+## Running The App
+
+**You will need**
+- Python 3
+- Virtualenv (or any other package that manages python virtual environments for you)
+- Tkinter
+- Docker
+
+1. Make sure you have Python 3 installed.
+2. Make sure you have Docker installed.
+2. Make sure you have Tkinter installed. If you don't have it installed:
+    - For linux use: `sudo apt-get install python python3-tk`
+    - For other Windows or MacOS check: https://tkdocs.com/tutorial/install.html
+3. Create a virtual environment for this project and activate it (Make sure it is using python 3).
+4. Install the projects dependencies using pip i.e. `pip install -r requirements.txt`
+5. Run the `start_app.sh` file by: `./start_app.sh`
+
+If there any errors when trying to start the script, make sure `start_app.sh` is executable. You can do this by `chmod +x start_app.sh`
+
 #### Steps Shown in Video
 First a new contact is created using the `Add New` button. Their information is added into the text boxes and after pressing `Done`, their information is added to the database. The information I input was as follows:
 ```
