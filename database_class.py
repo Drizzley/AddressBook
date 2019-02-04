@@ -1,16 +1,25 @@
 """Class where all the database operations are done"""
 
 import mysql.connector
+import time
 
 class DataBaseClass(object):
 
     def __init__(self):
-        self.cnx = mysql.connector.connect(
-            user='root', 
-            password='my-secret-pw',
-            host='172.17.0.2',
-            database='testdb'
-        )
+        counter = 1
+        while True:
+            try:
+                self.cnx = mysql.connector.connect(
+                    user='root', 
+                    password='my-secret-pw',
+                    host='172.17.0.2',
+                    database='testdb'
+                )
+                break
+            except:
+                print("Waiting for Database connection ({} tries)...".format(counter))
+                counter += 1
+                time.sleep(15)
 
     def getNamesOfCustomers(self):
         """Returns a list with all the names"""
