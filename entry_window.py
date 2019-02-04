@@ -18,16 +18,13 @@ class EntryWindow(object):
 
         # If passed customer, change button to 'edit' instead of 'add'
         if customer_dict:
-            # customer_dict['first_name_id'] = customer_dict['first_name']
-            # customer_dict['last_name_id'] = customer_dict['last_name']
-            # customer_dict['street'] = customer_dict['address1']
-            # customer_dict['apt'] = customer_dict['address2']
             self.customer_data = {
                 'first_name_id': customer_dict['first_name'], 
                 'last_name_id': customer_dict['last_name']
             }
             self.done_button = Button(self.bottom_frame, text='Edit', command=self.editExistingCustomer)
         else:
+            self.customer_data = None
             self.done_button = Button(self.bottom_frame, text='Add', command=self.createNewCustomer)
 
         self.done_button.pack(side=LEFT, padx=5, pady=5)
